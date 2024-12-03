@@ -39,7 +39,6 @@ public class Evaluacion {
         }
 
         //Mostrar notas
-        mostrarListaNotas();
         sc.close();
 
 
@@ -59,15 +58,6 @@ public class Evaluacion {
         }
         sc.close();
 
-    }
-
-    private void mostrarListaNotas() {
-        // Muestra todas las notas
-        for (int i = 0; i < listaNotas.length; i++) {
-
-            System.out.println(listaNotas[i]);
-
-        }
     }
 
     //Setter y Getter
