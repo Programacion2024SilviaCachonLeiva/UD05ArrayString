@@ -9,24 +9,23 @@ public class Evaluacion {
     //Constructor
 
     Evaluacion(String nombreAsignatura) {
-        setNombreAsignatura(nombreAsignatura);
+        this.nombreAsignatura = nombreAsignatura;
     }
 
     Evaluacion(String nombreAsignatura, double[] listaNotas) {
-        setNombreAsignatura(nombreAsignatura);
-        setListaNotas(listaNotas);
+        this.nombreAsignatura = nombreAsignatura;
+        this.listaNotas = listaNotas;
     }
 
 
     //Métodos
-
     void leerNotas(int totalAlumnos) {
         //Flujo de entrada
         Scanner sc = new Scanner(System.in);
         String nuevasNotas;
 
         //Existe
-        if (!(listaNotas == null)) {
+        if (!(listaNotasNull())) {
             System.out.println("¿Notas ya introducidas desea introducirlas de nuevo(s/n)?");
             nuevasNotas = sc.next();
             //¿Volver a crear? Sí
@@ -38,7 +37,7 @@ public class Evaluacion {
             crearListaNotas(totalAlumnos);
         }
 
-        //Mostrar notas
+        System.out.println(this);
         sc.close();
 
 
@@ -49,32 +48,58 @@ public class Evaluacion {
         Scanner sc = new Scanner(System.in);
         // Crear la lista del objeto con longitud que se pasa.
         double[] listaNotas = new double[totalAlumnos];
+        double num;
 
         //Leer de 1 (indice 0) a "n" notas.
         for (int i = 0; i < totalAlumnos; i++) {
 
-            listaNotas[i] = sc.nextDouble();
+            num = sc.nextDouble();
+
+            //Laa notas son entre 0 y 10
+            if (0 <= num && num <= 10) {
+                listaNotas[i] = num;
+            } else {//Por defecto 0
+                listaNotas[i] = 0;
+            }
 
         }
+
         sc.close();
-
     }
 
-    //Setter y Getter
-
-    public String getNombreAsignatura() {
-        return nombreAsignatura;
+    private boolean listaNotasNull(){
+        return (listaNotas == null);
     }
 
-    public void setNombreAsignatura(String nombreAsignatura) {
-        this.nombreAsignatura = nombreAsignatura;
+
+
+
+
+
+
+
+
+
+
+
+    @Override
+    public String toString() {
+        String notas = "";
+
+        if (listaNotasNull()) {
+            notas = "Sin notas por el momento";
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                notas += "Alumno " + (i + 1) + ": " + listaNotas[i] + "\n";
+
+
+            }
+        }
+
+        return nombreAsignatura + "\n" + notas;
     }
 
-    public double[] getListaNotas() {
-        return listaNotas;
-    }
-
-    public void setListaNotas(double[] listaNotas) {
-        this.listaNotas = listaNotas;
-    }
 }
