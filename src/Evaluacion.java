@@ -8,11 +8,11 @@ public class Evaluacion {
 
     //Constructor
 
-    Evaluacion(String nombreAsignatura){
-            setNombreAsignatura(nombreAsignatura);
+    Evaluacion(String nombreAsignatura) {
+        setNombreAsignatura(nombreAsignatura);
     }
 
-    Evaluacion(String nombreAsignatura, double[] listaNotas){
+    Evaluacion(String nombreAsignatura, double[] listaNotas) {
         setNombreAsignatura(nombreAsignatura);
         setListaNotas(listaNotas);
     }
@@ -20,52 +20,55 @@ public class Evaluacion {
 
     //Métodos
 
-    void leerNotas(int totalAlumnos){
-
+    void leerNotas(int totalAlumnos) {
+        //Flujo de entrada
         Scanner sc = new Scanner(System.in);
         String nuevasNotas;
 
-        if(!(listaNotas == null)){
+        //Existe
+        if (!(listaNotas == null)) {
             System.out.println("¿Notas ya introducidas desea introducirlas de nuevo(s/n)?");
             nuevasNotas = sc.next();
-
-            if(nuevasNotas.equalsIgnoreCase("s"){
-
+            //¿Volver a crear? Sí
+            if (nuevasNotas.equalsIgnoreCase("s")) {
+                crearListaNotas(totalAlumnos);
             }
-
-
-
-        }else{
-
+            //NO existe
+        } else {
+            crearListaNotas(totalAlumnos);
         }
 
-
-        System.out.println();
+        //Mostrar notas
+        mostrarListaNotas();
         sc.close();
 
 
     }
 
-    private static double[] crearListaNotas(int totalAlumnos){
+    private void crearListaNotas(int totalAlumnos) {
+        // Flujo de entrada
         Scanner sc = new Scanner(System.in);
+        // Crear la lista del objeto con longitud que se pasa.
         double[] listaNotas = new double[totalAlumnos];
 
-        for(int i = 0; i < totalAlumnos; i++){
+        //Leer de 1 (indice 0) a "n" notas.
+        for (int i = 0; i < totalAlumnos; i++) {
 
             listaNotas[i] = sc.nextDouble();
 
         }
-
-
         sc.close();
-
-
 
     }
 
+    private void mostrarListaNotas() {
+        // Muestra todas las notas
+        for (int i = 0; i < listaNotas.length; i++) {
 
+            System.out.println(listaNotas[i]);
 
-
+        }
+    }
 
     //Setter y Getter
 
