@@ -302,4 +302,59 @@ public class Evaluacion {
         }
         return suspensos;
     }
+
+    /**
+     * Busca el primer alumno cuya nota sea menor que la nota proporcionada.
+     * Si no se encuentra un alumno con una nota menor, devuelve -1.
+     *
+     * @param nota La nota con la que se comparan las notas de los alumnos.
+     * @return El índice del primer alumno cuya nota sea menor que la nota dada, o -1 si no hay ninguno.
+     */
+    private int primerMenor(double nota) {
+        boolean noEncontrado = true;
+        int indice = 0;
+        int primerMenor = -1;
+
+        // Buscar la primera nota menor que la proporcionada
+        while (noEncontrado) {
+            if (listaNotas[indice] < nota) {
+                noEncontrado = false;
+                primerMenor = indice;
+            }
+            // Si se alcanza el final del array sin encontrar, terminar la búsqueda
+            if (listaNotas.length == indice) {
+                noEncontrado = false;
+                primerMenor = -1;
+            }
+            indice++;
+        }
+
+        return primerMenor;
+    }
+
+    /**
+     * Devuelve una representación en cadena de texto de la evaluación,
+     * mostrando el nombre de la asignatura y las notas de los alumnos.
+     * Si no se han introducido notas, indica que no hay notas disponibles.
+     *
+     * @return Una cadena que representa la asignatura y las notas de los alumnos.
+     */
+    @Override
+    public String toString() {
+        String notas = "";
+
+        // Verifica si las notas son nulas
+        if (listaNotasNull()) {
+            notas = "Sin notas por el momento";
+        } else {
+            // Si existen notas, las agrega al String
+            for (int i = 0; i < listaNotas.length; i++) {
+                notas += "Alumno " + (i + 1) + ": " + listaNotas[i] + "\n";
+            }
+        }
+
+        // Retorna el nombre de la asignatura junto con las notas
+        return nombreAsignatura + "\n" + notas;
+    }
+
 }
