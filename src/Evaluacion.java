@@ -230,6 +230,86 @@ public class Evaluacion {
 
     }
 
+    private double notaAlumno(int indiceAlumno){
+        double nota;
+        if (listaNotasNull()) {
+
+            nota = -1;
+
+        } else {
+
+            if (indiceAlumno > 0 && indiceAlumno <= listaNotas.length) {
+                nota = listaNotas[indiceAlumno];
+            } else {
+                nota = -1;
+            }
+
+        }
+        return nota;
+    }
+
+    private int[] dameAprobados(){
+        int indice = 0;
+        int[] aprobados = new int[totalAprobados()];
+
+        if(totalAprobados() > 0){
+
+           for(int i = 0; i < listaNotas[i]; i++){
+               if(notaAlumno(i) >= 5){
+                   aprobados[indice] = i;
+                   indice++;
+               }
+           }
+
+        }else{
+            aprobados = null;
+        }
+
+        return aprobados;
+    }
+
+    private int[] dameSuspensos(){
+        int indice = 0;
+        int[] suspensos = new int[totalSuspensos()];
+
+        if(totalSuspensos() > 0){
+
+            for(int i = 0; i < listaNotas[i]; i++){
+                if(notaAlumno(i) < 5){
+                    suspensos[indice] = i;
+                    indice++;
+                }
+            }
+
+        }else{
+            suspensos = null;
+        }
+
+        return suspensos;
+    }
+
+    private int primerMenor(double nota){
+       boolean noEncontrado = true;
+       int indice = 0;
+       int primerMenor = -1;
+
+        while(noEncontrado){
+           if(listaNotas[indice] < nota){
+               noEncontrado = false;
+               primerMenor = indice;
+           }
+           if (listaNotas.length == indice){
+               noEncontrado = false;
+               primerMenor = -1;
+           }
+           indice++;
+        }
+
+        return primerMenor;
+    }
+
+
+
 
 
 
