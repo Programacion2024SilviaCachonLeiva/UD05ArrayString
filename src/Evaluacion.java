@@ -67,13 +67,145 @@ public class Evaluacion {
         sc.close();
     }
 
-    private boolean listaNotasNull(){
+    private boolean listaNotasNull() {
         return (listaNotas == null);
     }
 
 
+    private double media() {
+        double media;
+        if (listaNotasNull()) {
+
+            media = -1;
+        } else {
 
 
+            double sum = 0;
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                sum += listaNotas[i];
+
+            }
+
+            media = sum / listaNotas.length;
+        }
+        return media;
+
+    }
+
+    private double minimo() {
+        double min = 10;
+        if (listaNotasNull()) {
+
+            min = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] < min) {
+                    min = listaNotas[i];
+                }
+
+            }
+
+        }
+        return min;
+
+    }
+
+    private double maximo() {
+        double max = 0;
+        if (listaNotasNull()) {
+
+            max = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] > max) {
+                    max = listaNotas[i];
+                }
+
+            }
+
+        }
+        return max;
+
+    }
+
+    private int totalSuspensos() {
+        int suspensos = 0;
+        if (listaNotasNull()) {
+
+            suspensos = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] < 5) {
+                    suspensos++;
+                }
+
+            }
+
+        }
+        return suspensos;
+    }
+
+    private int totalAprobados() {
+        int aprobados = 0;
+        if (listaNotasNull()) {
+
+            aprobados = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] >= 5) {
+                    aprobados++;
+                }
+
+            }
+
+        }
+        return aprobados;
+    }
+
+    private void cambiarNota(double nota, int alumno) {
+
+        if (nota > 0 && nota <= listaNotas.length) {
+            listaNotas[alumno - 1] = nota;
+        } else {
+            System.out.println("Alumno no válido");
+        }
+    }
+
+    private int mejorAlumno() {
+        double max = -1;
+        int mejorAlumno = -1;
+        if (listaNotasNull()) {
+
+            max = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] > max) {
+                    max = listaNotas[i];
+                    mejorAlumno = i;
+                }
+
+            }
+
+        }
+        return mejorAlumno;
+
+    }
 
 
 
