@@ -207,7 +207,28 @@ public class Evaluacion {
 
     }
 
+    private int peorAlumno() {
+        double min = 10;
+        int peorAlumno = 0;
+        if (listaNotasNull()) {
 
+            peorAlumno = -1;
+
+        } else {
+
+            for (int i = 0; i < listaNotas.length; i++) {
+
+                if (listaNotas[i] < min) {
+                    min = listaNotas[i];
+                    peorAlumno = i;
+                }
+
+            }
+
+        }
+        return peorAlumno;
+
+    }
 
 
 
