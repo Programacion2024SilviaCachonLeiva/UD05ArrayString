@@ -185,7 +185,7 @@ public class Evaluacion {
     }
 
     private int mejorAlumno() {
-        double max = -1;
+        double max = 0;
         int mejorAlumno = 0;
         if (listaNotasNull()) {
 
