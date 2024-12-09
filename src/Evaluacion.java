@@ -11,6 +11,7 @@ public class Evaluacion {
 
     /**
      * Constructor que inicializa el nombre de la asignatura.
+     *
      * @param nombreAsignatura El nombre de la asignatura.
      */
     Evaluacion(String nombreAsignatura) {
@@ -19,8 +20,9 @@ public class Evaluacion {
 
     /**
      * Constructor que inicializa tanto el nombre de la asignatura como la lista de notas.
+     *
      * @param nombreAsignatura El nombre de la asignatura.
-     * @param listaNotas El arreglo con las notas de los alumnos.
+     * @param listaNotas       El arreglo con las notas de los alumnos.
      */
     Evaluacion(String nombreAsignatura, double[] listaNotas) {
         this.nombreAsignatura = nombreAsignatura;
@@ -30,6 +32,7 @@ public class Evaluacion {
     /**
      * Lee las notas de los alumnos. Si las notas ya han sido introducidas, pregunta
      * si se desean modificar.
+     *
      * @param totalAlumnos El número total de alumnos cuya nota se va a ingresar.
      */
     void leerNotas(int totalAlumnos) {
@@ -56,12 +59,13 @@ public class Evaluacion {
 
     /**
      * Crea una nueva lista de notas, pidiendo la entrada del usuario para cada nota.
+     *
      * @param totalAlumnos El número total de alumnos cuya nota se va a ingresar.
      */
-    private void crearListaNotas(int totalAlumnos) {
+    public void crearListaNotas(int totalAlumnos) {
         Scanner sc = new Scanner(System.in);
         // Crear el arreglo de notas con el número de alumnos especificado
-        double[] listaNotas = new double[totalAlumnos];
+        listaNotas = new double[totalAlumnos];
         double num;
 
         // Leer las notas de cada alumno
@@ -77,23 +81,23 @@ public class Evaluacion {
             }
 
         }
-
-        sc.close();
     }
 
     /**
      * Verifica si la lista de notas es nula.
+     *
      * @return true si la lista de notas es nula, false en caso contrario.
      */
-    private boolean listaNotasNull() {
+    public boolean listaNotasNull() {
         return (listaNotas == null);
     }
 
     /**
      * Calcula la media de las notas de los alumnos.
+     *
      * @return La media de las notas o -1 si la lista de notas es nula.
      */
-    private double media() {
+    public double media() {
         double media;
         if (listaNotasNull()) {
             media = -1;
@@ -110,9 +114,10 @@ public class Evaluacion {
 
     /**
      * Calcula la nota mínima de los alumnos.
+     *
      * @return La nota mínima o -1 si la lista de notas es nula.
      */
-    private double minimo() {
+    public double minimo() {
         double min = 10;
         if (listaNotasNull()) {
             min = -1;
@@ -129,9 +134,10 @@ public class Evaluacion {
 
     /**
      * Calcula la nota máxima de los alumnos.
+     *
      * @return La nota máxima o -1 si la lista de notas es nula.
      */
-    private double maximo() {
+    public double maximo() {
         double max = 0;
         if (listaNotasNull()) {
             max = -1;
@@ -148,9 +154,10 @@ public class Evaluacion {
 
     /**
      * Calcula el número total de suspensos (notas menores a 5).
+     *
      * @return El número de suspensos o -1 si la lista de notas es nula.
      */
-    private int totalSuspensos() {
+    public int totalSuspensos() {
         int suspensos = 0;
         if (listaNotasNull()) {
             suspensos = -1;
@@ -167,9 +174,10 @@ public class Evaluacion {
 
     /**
      * Calcula el número total de aprobados (notas mayores o iguales a 5).
+     *
      * @return El número de aprobados o -1 si la lista de notas es nula.
      */
-    private int totalAprobados() {
+    public int totalAprobados() {
         int aprobados = 0;
         if (listaNotasNull()) {
             aprobados = -1;
@@ -186,10 +194,11 @@ public class Evaluacion {
 
     /**
      * Cambia la nota de un alumno especificado por su índice.
-     * @param nota La nueva nota a asignar.
+     *
+     * @param nota   La nueva nota a asignar.
      * @param alumno El índice del alumno cuya nota se va a cambiar.
      */
-    private void cambiarNota(double nota, int alumno) {
+    public void cambiarNota(double nota, int alumno) {
         // Verificar si el índice del alumno es válido
         if (nota > 0 && nota <= listaNotas.length) {
             listaNotas[alumno - 1] = nota;
@@ -200,9 +209,10 @@ public class Evaluacion {
 
     /**
      * Encuentra el índice del mejor alumno (con la nota más alta).
+     *
      * @return El índice del mejor alumno o -1 si la lista de notas es nula.
      */
-    private int mejorAlumno() {
+    public int mejorAlumno() {
         double max = 0;
         int mejorAlumno = 0;
         if (listaNotasNull()) {
@@ -221,9 +231,10 @@ public class Evaluacion {
 
     /**
      * Encuentra el índice del peor alumno (con la nota más baja).
+     *
      * @return El índice del peor alumno o -1 si la lista de notas es nula.
      */
-    private int peorAlumno() {
+    public int peorAlumno() {
         double min = 10;
         int peorAlumno = 0;
         if (listaNotasNull()) {
@@ -242,10 +253,11 @@ public class Evaluacion {
 
     /**
      * Obtiene la nota de un alumno especificado por su índice.
+     *
      * @param indiceAlumno El índice del alumno.
      * @return La nota del alumno o -1 si el índice es inválido o si la lista de notas es nula.
      */
-    private double notaAlumno(int indiceAlumno){
+    public double notaAlumno(int indiceAlumno) {
         double nota;
         if (listaNotasNull()) {
             nota = -1;
@@ -262,20 +274,21 @@ public class Evaluacion {
 
     /**
      * Devuelve los índices de los alumnos aprobados.
+     *
      * @return Un arreglo con los índices de los alumnos aprobados o null si no hay aprobados.
      */
-    private int[] dameAprobados(){
+    public int[] dameAprobados() {
         int indice = 0;
         int[] aprobados = new int[totalAprobados()];
 
-        if(totalAprobados() > 0){
-            for(int i = 0; i < listaNotas[i]; i++){
-                if(notaAlumno(i) >= 5){
+        if (totalAprobados() > 0) {
+            for (int i = 0; i < listaNotas[i]; i++) {
+                if (notaAlumno(i) >= 5) {
                     aprobados[indice] = i;
                     indice++;
                 }
             }
-        }else{
+        } else {
             aprobados = null;
         }
 
@@ -284,20 +297,21 @@ public class Evaluacion {
 
     /**
      * Devuelve los índices de los alumnos suspensos.
+     *
      * @return Un arreglo con los índices de los alumnos suspensos o null si no hay suspensos.
      */
-    private int[] dameSuspensos(){
+    public int[] dameSuspensos() {
         int indice = 0;
         int[] suspensos = new int[totalSuspensos()];
 
-        if(totalSuspensos() > 0){
-            for(int i = 0; i < listaNotas[i]; i++){
-                if(notaAlumno(i) < 5){
+        if (totalSuspensos() > 0) {
+            for (int i = 0; i < listaNotas[i]; i++) {
+                if (notaAlumno(i) < 5) {
                     suspensos[indice] = i;
                     indice++;
                 }
             }
-        }else{
+        } else {
             suspensos = null;
         }
         return suspensos;
@@ -310,7 +324,7 @@ public class Evaluacion {
      * @param nota La nota con la que se comparan las notas de los alumnos.
      * @return El índice del primer alumno cuya nota sea menor que la nota dada, o -1 si no hay ninguno.
      */
-    private int primerMenor(double nota) {
+    public int primerMenor(double nota) {
         boolean noEncontrado = true;
         int indice = 0;
         int primerMenor = -1;
@@ -332,13 +346,13 @@ public class Evaluacion {
         return primerMenor;
     }
 
-    public double[] ordenar(){
+    public double[] ordenar() {
         double[] notasOrdenadas = listaNotas;
 
-        for(int i = 0; i < notasOrdenadas.length -1; i++){
-            for(int j = 0; j < notasOrdenadas.length -1 -i; j++){
+        for (int i = 0; i < notasOrdenadas.length - 1; i++) {
+            for (int j = 0; j < notasOrdenadas.length - 1 - i; j++) {
                 int index = primerMenor(notasOrdenadas[j]);
-                if(index != -1){
+                if (index != -1) {
                     double swap = notasOrdenadas[j];
                     notasOrdenadas[j] = notasOrdenadas[index];
                     notasOrdenadas[index] = swap;
@@ -349,37 +363,36 @@ public class Evaluacion {
         return notasOrdenadas;
     }
 
-public void analizaGrupo(){
+    public void analizaGrupo() {
         int mas7 = 0;
         int de5a7 = 0;
         int menos5 = 0;
 
-        for(int i = 0; i < listaNotas.length; i++){
-            if(listaNotas[i] > 7){
+        for (int i = 0; i < listaNotas.length; i++) {
+            if (listaNotas[i] > 7) {
                 mas7++;
-            } else if (listaNotas[i] <=7 && listaNotas[i] >= 5) {
+            } else if (listaNotas[i] <= 7 && listaNotas[i] >= 5) {
                 de5a7++;
 
-            } else if (listaNotas[i]<5) {
+            } else if (listaNotas[i] < 5) {
                 menos5++;
 
             }
         }
 
-        double dostercios = listaNotas.length/(2.0/3.0);
-        if( dostercios <= mas7){
+        double dostercios = listaNotas.length / (2.0 / 3.0);
+        if (dostercios <= mas7) {
             System.out.println("VAMOS FENOMENAL");
         } else if (dostercios <= de5a7) {
             System.out.println("“REPASAR EJERCICIOS CON DIFICULTAD");
-        }else if (dostercios <= menos5){
+        } else if (dostercios <= menos5) {
             System.out.println("VAMOS MAL...REPETIR EL TEMARIO");
-        }else{
+        } else {
             System.out.println("HACER SUBGRUPOS CON TAREAS DE DIFERENTE DIFICULTAS");
         }
 
 
-}
-
+    }
 
 
     /**
