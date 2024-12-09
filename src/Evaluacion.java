@@ -332,6 +332,56 @@ public class Evaluacion {
         return primerMenor;
     }
 
+    public double[] ordenar(){
+        double[] notasOrdenadas = listaNotas;
+
+        for(int i = 0; i < notasOrdenadas.length -1; i++){
+            for(int j = 0; j < notasOrdenadas.length -1 -i; j++){
+                int index = primerMenor(notasOrdenadas[j]);
+                if(index != -1){
+                    double swap = notasOrdenadas[j];
+                    notasOrdenadas[j] = notasOrdenadas[index];
+                    notasOrdenadas[index] = swap;
+                }
+            }
+        }
+
+        return notasOrdenadas;
+    }
+
+public void analizaGrupo(){
+        int mas7 = 0;
+        int de5a7 = 0;
+        int menos5 = 0;
+
+        for(int i = 0; i < listaNotas.length; i++){
+            if(listaNotas[i] > 7){
+                mas7++;
+            } else if (listaNotas[i] <=7 && listaNotas[i] >= 5) {
+                de5a7++;
+
+            } else if (listaNotas[i]<5) {
+                menos5++;
+
+            }
+        }
+
+        double dostercios = listaNotas.length/(2.0/3.0);
+        if( dostercios <= mas7){
+            System.out.println("VAMOS FENOMENAL");
+        } else if (dostercios <= de5a7) {
+            System.out.println("“REPASAR EJERCICIOS CON DIFICULTAD");
+        }else if (dostercios <= menos5){
+            System.out.println("VAMOS MAL...REPETIR EL TEMARIO");
+        }else{
+            System.out.println("HACER SUBGRUPOS CON TAREAS DE DIFERENTE DIFICULTAS");
+        }
+
+
+}
+
+
+
     /**
      * Devuelve una representación en cadena de texto de la evaluación,
      * mostrando el nombre de la asignatura y las notas de los alumnos.
