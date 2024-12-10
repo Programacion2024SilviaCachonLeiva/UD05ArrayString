@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Principal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Evaluacion evaluacion = null;
+        Asignatura evaluacion = null;
 
         int opcion;
 
@@ -35,7 +35,7 @@ public class Principal {
                 case 1 -> {
                     System.out.print("Introduce el nombre de la asignatura: ");
                     String nombreAsignatura = sc.next();
-                    evaluacion = new Evaluacion(nombreAsignatura);
+                    evaluacion = new Asignatura(nombreAsignatura);
                     System.out.println("Evaluación creada.");
                 }
                 case 2 -> {

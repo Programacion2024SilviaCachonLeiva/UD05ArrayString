@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Clase Evaluacion para gestionar las notas de alumnos en una asignatura.
  */
-public class Evaluacion {
+public class Asignatura {
 
     // Variable para almacenar el nombre de la asignatura.
     private String nombreAsignatura;
@@ -18,7 +18,7 @@ public class Evaluacion {
      *
      * @param nombreAsignatura Nombre de la asignatura.
      */
-    Evaluacion(String nombreAsignatura) {
+    Asignatura(String nombreAsignatura) {
         this.nombreAsignatura = nombreAsignatura;
     }
 
@@ -28,7 +28,7 @@ public class Evaluacion {
      * @param nombreAsignatura Nombre de la asignatura.
      * @param listaNotas       Arreglo de notas inicial.
      */
-    Evaluacion(String nombreAsignatura, double[] listaNotas) {
+    Asignatura(String nombreAsignatura, double[] listaNotas) {
         this.nombreAsignatura = nombreAsignatura;
         this.listaNotas = listaNotas;
     }
