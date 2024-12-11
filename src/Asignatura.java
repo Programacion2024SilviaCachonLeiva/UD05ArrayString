@@ -447,4 +447,8 @@ public class Asignatura {
     }
 
 
+    public String getNombreAsignatura(){
+        return nombreAsignatura;
+    }
+
 }
