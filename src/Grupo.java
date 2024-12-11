@@ -1,3 +1,7 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Grupo {
 
     private String nombreGrupo;
@@ -14,7 +18,16 @@ public class Grupo {
     }
 
     //Métodos
-    public void leerAlumnos(){}
+    public void leerAlumnos(){
+        Scanner sc =new Scanner(System.in);
+
+        for(int i = 0; i < alumnos.length; i++){
+            System.out.println("Nombre del alumno "+(i+1)+": ");
+            alumnos[i] = sc.next();
+        }
+
+        Arrays.sort(alumnos);
+    }
     public void mostrarAlumnos(){}
     public void leerAsignaturas(){}
     public void mostrarAsignaturas(){}
@@ -32,7 +45,7 @@ public class Grupo {
     public double dameAlumnoSuspensos(){}
     public String dameMejorAlumnoMedia(){}
     public void muestraMediaAlumnos(){}
-    public void muestraRepartidor(){}
-    public void analizarAsignatura(){}
+    public void muestraRepartidores(){}
+    public void analizarAsignaturas(){}
 
 }
