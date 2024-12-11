@@ -11,7 +11,7 @@ public class Principal2 {
 
             System.out.println("""
                     1- Leer Alumnos
-                    2- Leer Notas y Asignaturas
+                    2- Leer Notas Asignaturas
                     3- Mostrar Grupo y Notas
                     4- Ver asignaturas
                     5- Ver media asignaturas
@@ -30,7 +30,10 @@ public class Principal2 {
 
                 switch (opc){
                     case 1 -> grupo.leerAlumnos();
-                    case 2 -> grupo.mostrarAlumnos();
+                    case 2 -> grupo.leerAsignaturas();
+                    case 3 -> System.out.println(grupo);
+                    case 4 -> grupo.mostrarAsignaturas();
+                    case 5-> grupo.mostrarMedias();
 
                 }
 

@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -51,9 +50,28 @@ public class Grupo {
     }
 
     @Override
-    public String toString(){
-        return
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+
+        // Encabezado
+        string.append(String.format("%-15s", "Alumno")); // Nombre del alumno, 15 caracteres mínimo
+        for (int a = 0; a < asignaturas.length; a++) {
+            string.append(String.format("%-15s", asignaturas[a].getNombreAsignatura())); // 15 caracteres para cada asignatura
+        }
+        string.append("\n");
+
+        // Filas de alumnos y sus notas
+        for (int i = 0; i < alumnos.length; i++) {
+            string.append(String.format("%-15s", alumnos[i])); // Nombre del alumno
+            for (int j = 0; j < asignaturas.length; j++) {
+                string.append(String.format("%-15.2f", asignaturas[j].notaAlumno(i))); // Nota con 2 decimales
+            }
+            string.append("\n");
+        }
+
+        return string.toString();
     }
+
 
     public void mostrarMedias(){}
     public String dameAsignaturaMinima(){}
