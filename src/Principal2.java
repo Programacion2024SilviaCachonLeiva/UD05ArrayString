@@ -4,7 +4,7 @@ public class Principal2 {
 
     public static void main(String[] args) {
         int opc;
-        Grupo grupo = new Grupo("DAM1k",24,5);
+        Grupo grupo = new Grupo("DAM1k",5,3);
 
         do{
             Scanner sc = new Scanner(System.in);
@@ -34,6 +34,8 @@ public class Principal2 {
                     case 3 -> System.out.println(grupo);
                     case 4 -> grupo.mostrarAsignaturas();
                     case 5-> grupo.mostrarMedias();
+                    case 6 -> System.out.println(grupo.dameAsignaturaMinima());
+
 
                 }
 

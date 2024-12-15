@@ -73,15 +73,100 @@ public class Grupo {
     }
 
 
-    public void mostrarMedias(){}
-    public String dameAsignaturaMinima(){}
-    public String dameAsignaturaMaxima(){}
-    public double dameMediaAsignatura(){}
-    public double dameAlumnoMedia(){}
-    public double dameAlumnoSuspensos(){}
-    public String dameMejorAlumnoMedia(){}
-    public void muestraMediaAlumnos(){}
+    public void mostrarMedias(){
+        StringBuilder string = new StringBuilder();
+        for(int i = 0; i < asignaturas.length;i++ ){
+            string.append(String.format("%-15s",asignaturas[i].getNombreAsignatura()));
+        }
+        string.append("\n");
+        for (int i = 0; i < asignaturas.length; i++){
+            string.append(String.format("%-15.2f",asignaturas[i].media()));
+        }
+        System.out.println(string);
+
+    }
+    public String dameAsignaturaMinima(){
+        int min = -1;
+        double notaMin = 11;
+        for(int i = 0; i < asignaturas.length;i++){
+
+            if(asignaturas[i].media()< notaMin){
+                notaMin = asignaturas[i].media();
+                min = i;
+            }
+        }
+
+        return asignaturas[min].getNombreAsignatura();
+    }
+
+    public String dameAsignaturaMaxima(){
+        int max = -1;
+        double notaMax = -1;
+        for(int i = 0; i < asignaturas.length;i++){
+
+            if(asignaturas[i].media() > notaMax){
+                notaMax = asignaturas[i].media();
+                max = i;
+            }
+        }
+
+        return asignaturas[max].getNombreAsignatura();
+    }
+
+    public double dameMediaAsignatura(int i){
+        return asignaturas[i].media();
+    }
+
+    public double dameAlumnoMedia(int i){
+        double media = 0;
+
+        for(int j = 0; j < asignaturas.length; j++){
+            media += asignaturas[j].notaAlumno(i);
+        }
+
+        return media/asignaturas.length;
+
+    }
+
+
+    public double dameAlumnoSuspensos(int i){
+        double suspensos = 0;
+
+        for(int j = 0; j < asignaturas.length; j++){
+
+            if(asignaturas[j].notaAlumno(i)<5){
+            suspensos++;}
+        }
+
+        return suspensos;
+
+
+
+    }
+
+    public String dameMejorAlumnoMedia(){
+       int mejor = -1;
+       double mejorMedia = -1;
+        for(int i = 0; i < alumnos.length; i++){
+
+            if(dameAlumnoMedia(i) > mejorMedia){
+                mejorMedia = dameAlumnoMedia(i);
+                mejor = i;
+            }
+        }
+
+        return alumnos[mejor];
+    }
+
+
+    public void muestraMediaAlumnos(){
+
+
+
+    }
+
+    /*
     public void muestraRepartidores(){}
-    public void analizarAsignaturas(){}
+    public void analizarAsignaturas(){}*/
 
 }
