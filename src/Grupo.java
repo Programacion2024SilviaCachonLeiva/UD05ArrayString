@@ -160,13 +160,26 @@ public class Grupo {
 
 
     public void muestraMediaAlumnos(){
+        StringBuilder string = new StringBuilder();
+        for(int i = 0; i < alumnos.length; i++){
+            string.append(String.format("%-15s",alumnos[i])).append(String.format("%-15.2f",dameAlumnoMedia(i))).append("\n");
+        }
 
-
-
+        System.out.println(string);
     }
 
-    /*
-    public void muestraRepartidores(){}
-    public void analizarAsignaturas(){}*/
+
+    public void muestraRepartidores(){
+
+        StringBuilder string = new StringBuilder();
+        for(int i = 0; i < alumnos.length; i++){
+            if(dameAlumnoSuspensos(i) > 2){
+            string.append(String.format("%-15s",alumnos[i])).append("\n");}
+        }
+
+        System.out.println(string);
+
+        }
+    public void analizarAsignaturas(){}
 
 }
