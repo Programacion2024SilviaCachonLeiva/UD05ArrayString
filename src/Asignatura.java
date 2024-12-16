@@ -417,11 +417,45 @@ public class Asignatura {
             System.out.println("REPASAR EJERCICIOS CON DIFICULTAD");
         } else if (menos5 >= dostercios) {
             // Si más de dos tercios tienen notas menores a 5.
-            System.out.println("VAMOS MAL... REPEMOS EL TEMARIO");
+            System.out.println("VAMOS MAL... REPASEMOS EL TEMARIO");
         } else {
             // Si no se cumple ninguna de las anteriores, propone hacer subgrupos.
             System.out.println("HACER SUBGRUPOS CON TAREAS DE DIFERENTE DIFICULTAD");
         }
+    }
+    //Para la clase grupo
+    public String analizaGrupoS() {
+       String string;
+        int mas7 = 0; // Contador de alumnos con notas mayores a 7.
+        int de5a7 = 0; // Contador de alumnos con notas entre 5 y 7 (inclusive).
+        int menos5 = 0; // Contador de alumnos con notas menores a 5.
+
+        for (int i = 0; i < listaNotas.length; i++) { // Recorre todas las notas.
+            if (listaNotas[i] > 7) {
+                mas7++; // Incrementa el contador de notas mayores a 7.
+            } else if (listaNotas[i] <= 7 && listaNotas[i] >= 5) {
+                de5a7++; // Incrementa el contador de notas entre 5 y 7.
+            } else if (listaNotas[i] < 5) {
+                menos5++; // Incrementa el contador de notas menores a 5.
+            }
+        }
+
+        double dostercios = (listaNotas.length * 2) / 3.0; // Calcula dos tercios del total de alumnos.
+
+        if (mas7 >= dostercios) { // Si más de dos tercios tienen notas mayores a 7.
+            string = "VAMOS FENOMENAL";
+        } else if (de5a7 >= dostercios) {
+            // Si más de dos tercios tienen notas entre 5 y 7.
+            string = "REPASAR EJERCICIOS CON DIFICULTAD";
+        } else if (menos5 >= dostercios) {
+            // Si más de dos tercios tienen notas menores a 5.
+           string = "VAMOS MAL... REPASEMOS EL TEMARIO";
+        } else {
+            // Si no se cumple ninguna de las anteriores, propone hacer subgrupos.
+            string = "HACER SUBGRUPOS CON TAREAS DE DIFERENTE DIFICULTAD";
+        }
+
+        return string;
     }
 
     /**

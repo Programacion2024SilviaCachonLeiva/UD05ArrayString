@@ -1,13 +1,23 @@
+/**
+ * Clase principal del programa para gestionar una evaluación de alumnos.
+ * Permite realizar diversas operaciones como leer notas, calcular la media,
+ * encontrar el mejor o peor alumno, entre otras.
+ */
 import java.util.Scanner;
 
 public class Principal {
+    /**
+     * Método principal donde se ejecuta el programa.
+     * @param args Argumentos de línea de comandos.
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Asignatura evaluacion = null;
+        Asignatura evaluacion = null; // Objeto que representará la evaluación.
 
-        int opcion;
+        int opcion; // Variable para almacenar la opción seleccionada por el usuario.
 
         do {
+            // Menú principal del programa.
             System.out.println("""
                     1- Crear Evaluación
                     2- Leer Notas
@@ -30,15 +40,18 @@ public class Principal {
                     Elige una opción: 
                     """);
 
-            opcion = sc.nextInt();
+            opcion = sc.nextInt(); // Leer la opción seleccionada.
+
             switch (opcion) {
                 case 1 -> {
+                    // Crear una nueva evaluación.
                     System.out.print("Introduce el nombre de la asignatura: ");
                     String nombreAsignatura = sc.next();
                     evaluacion = new Asignatura(nombreAsignatura);
                     System.out.println("Evaluación creada.");
                 }
                 case 2 -> {
+                    // Leer las notas de los alumnos.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -48,6 +61,7 @@ public class Principal {
                     }
                 }
                 case 3 -> {
+                    // Mostrar todas las notas de la evaluación.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -55,6 +69,7 @@ public class Principal {
                     }
                 }
                 case 4 -> {
+                    // Mostrar la media de las notas.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -62,6 +77,7 @@ public class Principal {
                     }
                 }
                 case 5 -> {
+                    // Mostrar la nota mínima.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -69,6 +85,7 @@ public class Principal {
                     }
                 }
                 case 6 -> {
+                    // Mostrar la nota máxima.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -76,6 +93,7 @@ public class Principal {
                     }
                 }
                 case 7 -> {
+                    // Mostrar el total de suspensos.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -83,6 +101,7 @@ public class Principal {
                     }
                 }
                 case 8 -> {
+                    // Mostrar el total de aprobados.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -90,6 +109,7 @@ public class Principal {
                     }
                 }
                 case 9 -> {
+                    // Cambiar la nota de un alumno.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -101,6 +121,7 @@ public class Principal {
                     }
                 }
                 case 10 -> {
+                    // Mostrar el índice del mejor alumno.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -108,6 +129,7 @@ public class Principal {
                     }
                 }
                 case 11 -> {
+                    // Mostrar el índice del peor alumno.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -115,6 +137,7 @@ public class Principal {
                     }
                 }
                 case 12 -> {
+                    // Mostrar la nota de un alumno.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -124,6 +147,7 @@ public class Principal {
                     }
                 }
                 case 13 -> {
+                    // Mostrar los índices de los alumnos aprobados.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -132,6 +156,7 @@ public class Principal {
                     }
                 }
                 case 14 -> {
+                    // Mostrar los índices de los alumnos suspensos.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -140,6 +165,7 @@ public class Principal {
                     }
                 }
                 case 15 -> {
+                    // Mostrar el índice del primer alumno con una nota menor que el límite.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -149,6 +175,7 @@ public class Principal {
                     }
                 }
                 case 16 -> {
+                    // Mostrar las notas ordenadas.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
@@ -157,16 +184,18 @@ public class Principal {
                     }
                 }
                 case 17 -> {
+                    // Realizar un análisis general del grupo.
                     if (evaluacion == null) {
                         System.out.println("Primero debes crear una evaluación.");
                     } else {
                         evaluacion.analizaGrupo();
                     }
                 }
-                case 0 -> System.out.println("Saliendo del programa...");
-                default -> System.out.println("Opción no válida.");
+                case 0 -> System.out.println("Saliendo del programa. ¡Hasta luego!");
+                default -> System.out.println("Opción no válida. Intenta de nuevo.");
             }
-
         } while (opcion != 0);
+
+        sc.close();
     }
 }
