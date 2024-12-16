@@ -18,9 +18,10 @@ public class Principal2 {
                     6- Ver asignatura menor mínimo
                     7- Ver asignatura mayor máximo
                     8- Mostrar el alumno con mejor media
-                    9- Muestra media delos alumnos
+                    9- Muestra media de los alumnos
                     10- Muestra repetidores
                     11- Analiza Asignaturas
+                    12- Analizar Curso
                     """);
 
             opc = sc.nextInt();
@@ -36,7 +37,12 @@ public class Principal2 {
                 case 5-> grupo.mostrarMedias();
                 case 6 -> System.out.println(grupo.dameAsignaturaMinima());
                 case 7 -> System.out.println(grupo.dameAsignaturaMaxima());
-                case 8 -> System.out.println(grupo.dameAsignaturaMinima());
+                case 8 -> System.out.println(grupo.dameMejorAlumnoMedia());
+                case 9 -> grupo.muestraMediaAlumnos();
+                case 10 -> grupo.muestraRepartidores();
+                case 11 -> grupo.analizarAsignaturas();
+                case 12 -> grupo.analizarCurso();
+
 
 
             }

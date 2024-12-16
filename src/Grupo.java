@@ -11,7 +11,7 @@ public class Grupo {
     private Scanner sc = new Scanner(System.in);
 
     //Constructor
-    public Grupo(String nombreGrupo, int totalAlumnos, int totalAsignaturas){
+    public Grupo(String nombreGrupo, int totalAlumnos, int totalAsignaturas) {
         this.totalAlumnos = totalAlumnos;
         this.totalAsignaturas = totalAsignaturas;
 
@@ -21,30 +21,33 @@ public class Grupo {
     }
 
     //Métodos
-    public void leerAlumnos(){
-        for(int i = 0; i < alumnos.length; i++){
-            System.out.println("Nombre del alumno "+(i+1)+": ");
+    public void leerAlumnos() {
+        for (int i = 0; i < alumnos.length; i++) {
+            System.out.println("Nombre del alumno " + (i + 1) + ": ");
             alumnos[i] = sc.next();
         }
 
         Arrays.sort(alumnos);
     }
-    public void mostrarAlumnos(){
-        for(int i = 0; i < alumnos.length; i++){
-            System.out.println("Nombre del alumno "+(i+1)+": "+ alumnos[i]);
+
+    public void mostrarAlumnos() {
+        for (int i = 0; i < alumnos.length; i++) {
+            System.out.println("Nombre del alumno " + (i + 1) + ": " + alumnos[i]);
         }
 
     }
-    public void leerAsignaturas(){
-        for(int i = 0; i < asignaturas.length; i++){
-            System.out.println("Nombre de la asignatura "+(i+1)+":");
+
+    public void leerAsignaturas() {
+        for (int i = 0; i < asignaturas.length; i++) {
+            System.out.println("Nombre de la asignatura " + (i + 1) + ":");
             asignaturas[i] = new Asignatura(sc.next());
             asignaturas[i].leerNotas(totalAlumnos);
         }
 
     }
-    public void mostrarAsignaturas(){
-        for(int i = 0; i < asignaturas.length;i++){
+
+    public void mostrarAsignaturas() {
+        for (int i = 0; i < asignaturas.length; i++) {
             System.out.println(asignaturas[i].getNombreAsignatura());
         }
     }
@@ -73,24 +76,25 @@ public class Grupo {
     }
 
 
-    public void mostrarMedias(){
+    public void mostrarMedias() {
         StringBuilder string = new StringBuilder();
-        for(int i = 0; i < asignaturas.length;i++ ){
-            string.append(String.format("%-15s",asignaturas[i].getNombreAsignatura()));
+        for (int i = 0; i < asignaturas.length; i++) {
+            string.append(String.format("%-15s", asignaturas[i].getNombreAsignatura()));
         }
         string.append("\n");
-        for (int i = 0; i < asignaturas.length; i++){
-            string.append(String.format("%-15.2f",asignaturas[i].media()));
+        for (int i = 0; i < asignaturas.length; i++) {
+            string.append(String.format("%-15.2f", asignaturas[i].media()));
         }
         System.out.println(string);
 
     }
-    public String dameAsignaturaMinima(){
+
+    public String dameAsignaturaMinima() {
         int min = -1;
         double notaMin = 11;
-        for(int i = 0; i < asignaturas.length;i++){
+        for (int i = 0; i < asignaturas.length; i++) {
 
-            if(asignaturas[i].media()< notaMin){
+            if (asignaturas[i].media() < notaMin) {
                 notaMin = asignaturas[i].media();
                 min = i;
             }
@@ -99,12 +103,12 @@ public class Grupo {
         return asignaturas[min].getNombreAsignatura();
     }
 
-    public String dameAsignaturaMaxima(){
+    public String dameAsignaturaMaxima() {
         int max = -1;
         double notaMax = -1;
-        for(int i = 0; i < asignaturas.length;i++){
+        for (int i = 0; i < asignaturas.length; i++) {
 
-            if(asignaturas[i].media() > notaMax){
+            if (asignaturas[i].media() > notaMax) {
                 notaMax = asignaturas[i].media();
                 max = i;
             }
@@ -113,43 +117,43 @@ public class Grupo {
         return asignaturas[max].getNombreAsignatura();
     }
 
-    public double dameMediaAsignatura(int i){
+    public double dameMediaAsignatura(int i) {
         return asignaturas[i].media();
     }
 
-    public double dameAlumnoMedia(int i){
+    public double dameAlumnoMedia(int i) {
         double media = 0;
 
-        for(int j = 0; j < asignaturas.length; j++){
+        for (int j = 0; j < asignaturas.length; j++) {
             media += asignaturas[j].notaAlumno(i);
         }
 
-        return media/asignaturas.length;
+        return media / asignaturas.length;
 
     }
 
 
-    public double dameAlumnoSuspensos(int i){
+    public double dameAlumnoSuspensos(int i) {
         double suspensos = 0;
 
-        for(int j = 0; j < asignaturas.length; j++){
+        for (int j = 0; j < asignaturas.length; j++) {
 
-            if(asignaturas[j].notaAlumno(i)<5){
-                suspensos++;}
+            if (asignaturas[j].notaAlumno(i) < 5) {
+                suspensos++;
+            }
         }
 
         return suspensos;
 
 
-
     }
 
-    public String dameMejorAlumnoMedia(){
+    public String dameMejorAlumnoMedia() {
         int mejor = -1;
         double mejorMedia = -1;
-        for(int i = 0; i < alumnos.length; i++){
+        for (int i = 0; i < alumnos.length; i++) {
 
-            if(dameAlumnoMedia(i) > mejorMedia){
+            if (dameAlumnoMedia(i) > mejorMedia) {
                 mejorMedia = dameAlumnoMedia(i);
                 mejor = i;
             }
@@ -159,27 +163,59 @@ public class Grupo {
     }
 
 
-    public void muestraMediaAlumnos(){
+    public void muestraMediaAlumnos() {
         StringBuilder string = new StringBuilder();
-        for(int i = 0; i < alumnos.length; i++){
-            string.append(String.format("%-15s",alumnos[i])).append(String.format("%-15.2f",dameAlumnoMedia(i))).append("\n");
+        for (int i = 0; i < alumnos.length; i++) {
+            string.append(String.format("%-15s", alumnos[i])).append(String.format("%-15.2f", dameAlumnoMedia(i))).append("\n");
         }
 
         System.out.println(string);
     }
 
 
-    public void muestraRepartidores(){
+    public void muestraRepartidores() {
 
         StringBuilder string = new StringBuilder();
-        for(int i = 0; i < alumnos.length; i++){
-            if(dameAlumnoSuspensos(i) > 2){
-                string.append(String.format("%-15s",alumnos[i])).append("\n");}
+        for (int i = 0; i < alumnos.length; i++) {
+            if (dameAlumnoSuspensos(i) > 2) {
+                string.append(String.format("%-15s", alumnos[i])).append("\n");
+            }
         }
 
         System.out.println(string);
 
     }
-    public void analizarAsignaturas(){}
 
+    public void analizarAsignaturas() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < asignaturas.length; i++) {
+            stringBuilder.append(String.format("%-15s", asignaturas[i])).append(String.format("%-15s", asignaturas[i].analizaGrupoS())).append("\n");
+        }
+
+
+        System.out.println(stringBuilder);
+    }
+
+    public void analizarCurso() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < alumnos.length; i++) {
+            stringBuilder.append((String.format("%-15s", alumnos[i])));
+
+            if (dameAlumnoMedia(i) > 7) {
+                stringBuilder.append((String.format("%-15s", "VAMOS FENOMENAL")));
+            } else if (dameAlumnoMedia(i) < 7 && dameAlumnoMedia(i) >= 5) {
+                stringBuilder.append((String.format("%-15s", "REPASAR EJERCICIOS CON DIFICULTAD")));
+
+            } else
+                stringBuilder.append((String.format("%-15s", "VAMOS MAL... REPASEMOS EL TEMARIO")));
+
+            stringBuilder.append("\n");
+        }
+
+
+        System.out.println(stringBuilder);
+    }
 }
+
