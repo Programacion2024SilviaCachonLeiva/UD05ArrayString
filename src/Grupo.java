@@ -135,7 +135,7 @@ public class Grupo {
         for(int j = 0; j < asignaturas.length; j++){
 
             if(asignaturas[j].notaAlumno(i)<5){
-            suspensos++;}
+                suspensos++;}
         }
 
         return suspensos;
@@ -145,8 +145,8 @@ public class Grupo {
     }
 
     public String dameMejorAlumnoMedia(){
-       int mejor = -1;
-       double mejorMedia = -1;
+        int mejor = -1;
+        double mejorMedia = -1;
         for(int i = 0; i < alumnos.length; i++){
 
             if(dameAlumnoMedia(i) > mejorMedia){
@@ -174,12 +174,12 @@ public class Grupo {
         StringBuilder string = new StringBuilder();
         for(int i = 0; i < alumnos.length; i++){
             if(dameAlumnoSuspensos(i) > 2){
-            string.append(String.format("%-15s",alumnos[i])).append("\n");}
+                string.append(String.format("%-15s",alumnos[i])).append("\n");}
         }
 
         System.out.println(string);
 
-        }
+    }
     public void analizarAsignaturas(){}
 
 }

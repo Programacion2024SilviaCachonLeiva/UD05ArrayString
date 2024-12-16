@@ -1,5 +1,6 @@
 // Importación de la clase Scanner para leer datos desde la consola.
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -76,11 +77,11 @@ public class Asignatura {
             num = sc.nextDouble();
 
             // Valida que la nota esté entre 0 y 10.
-            if (0 <= num && num <= 10) {
-                listaNotas[i] = num;
-            } else {
-                listaNotas[i] = 0; // Si no es válida, asigna 0.
+            while (!(0 <= num && num <= 10)){
+                num = sc.nextDouble();
             }
+                listaNotas[i] = num;
+
         }
     }
 
@@ -298,7 +299,7 @@ public class Asignatura {
                 }
             }
         } else {
-            aprobados = new int[0]; // Si no hay aprobados, crea un arreglo vacío.
+            aprobados = null; // Si no hay aprobados, crea un arreglo vacío.
         }
 
         return aprobados; // Devuelve el arreglo con los índices de los alumnos aprobados.
@@ -328,7 +329,7 @@ public class Asignatura {
                 }
             }
         } else {
-            suspensos = new int[0]; // Si no hay suspensos, crea un arreglo vacío.
+            suspensos = null; // Si no hay suspensos, crea un arreglo vacío.
         }
 
         return suspensos; // Devuelve el arreglo con los índices de los alumnos suspensos.
@@ -364,7 +365,7 @@ public class Asignatura {
     public double[] ordenar() {
         double[] notasOrdenadas = listaNotas; // Crea un arreglo para las notas.
 
-        for (int i = 0; i < notasOrdenadas.length - 1; i++) {
+        /*for (int i = 0; i < notasOrdenadas.length - 1; i++) {
             // Recorre el arreglo para realizar el ordenamiento (burbuja).
             for (int j = 0; j < notasOrdenadas.length - 1 - i; j++) {
                 // Compara cada par de elementos adyacentes.
@@ -375,7 +376,9 @@ public class Asignatura {
                     notasOrdenadas[j + 1] = swap;
                 }
             }
-        }
+        }*/
+
+        Arrays.sort(notasOrdenadas);
 
         return notasOrdenadas; // Devuelve el arreglo ordenado.
     }

@@ -23,21 +23,23 @@ public class Principal2 {
                     11- Analiza Asignaturas
                     """);
 
-                opc = sc.nextInt();
+            opc = sc.nextInt();
 
 
 
 
-                switch (opc){
-                    case 1 -> grupo.leerAlumnos();
-                    case 2 -> grupo.leerAsignaturas();
-                    case 3 -> System.out.println(grupo);
-                    case 4 -> grupo.mostrarAsignaturas();
-                    case 5-> grupo.mostrarMedias();
-                    case 6 -> System.out.println(grupo.dameAsignaturaMinima());
+            switch (opc){
+                case 1 -> grupo.leerAlumnos();
+                case 2 -> grupo.leerAsignaturas();
+                case 3 -> System.out.println(grupo);
+                case 4 -> grupo.mostrarAsignaturas();
+                case 5-> grupo.mostrarMedias();
+                case 6 -> System.out.println(grupo.dameAsignaturaMinima());
+                case 7 -> System.out.println(grupo.dameAsignaturaMaxima());
+                case 8 -> System.out.println(grupo.dameAsignaturaMinima());
 
 
-                }
+            }
 
         }while(opc != 13);
     }
