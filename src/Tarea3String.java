@@ -1,8 +1,17 @@
 import static java.lang.Character.*;
-
+/**
+ * La clase Tarea3String proporciona varias funciones de manipulación de cadenas de texto.
+ * Estas funciones incluyen validación de NIF, manipulación de cadenas como quitar vocales, espacios sobrantes,
+ * invertir texto, contar caracteres, cifrar y descifrar cadenas, entre otras.
+ */
 public class Tarea3String {
 
-
+    /**
+     * Verifica si un NIF es válido según las reglas españolas.
+     *
+     * @param nif El NIF a comprobar.
+     * @return true si el NIF es válido, false en caso contrario.
+     */
     static boolean esCorrectoNIF(String nif) {
 
         //Variable para devolver un booleano de acuerdo a si es válido o no el nif
@@ -41,7 +50,12 @@ public class Tarea3String {
         return valido;
     }
 
-
+    /**
+     * Comprueba si los primeros 8 caracteres del NIF son dígitos.
+     *
+     * @param nif El NIF a comprobar.
+     * @return true si los 8 primeros caracteres son dígitos, false en caso contrario.
+     */
     private static boolean ochoPrimerosDigitos(String nif) {
 
         //Si no se dice lo contrario hay 8 dígitos
@@ -59,11 +73,16 @@ public class Tarea3String {
 
         return valido;
     }
-
+    /**
+     * Comprueba si la letra final del NIF es la correcta según los primeros 8 dígitos.
+     *
+     * @param nif El NIF a comprobar.
+     * @return true si la letra es correcta, false en caso contrario.
+     */
     private static boolean letraCorrecta(String nif) {
 
         //Selecciona los primeros 8 caracteres para los cálculos
-        String digitos = nif.substring(0, 7);
+        String digitos = nif.substring(0, 8);
 
         //Selecciona la letra para comprobarla después y la pone en máyuscula
         char letra = nif.charAt(8);
@@ -89,7 +108,12 @@ public class Tarea3String {
         return valido;
     }
 
-
+    /**
+     * Elimina todas las vocales (tanto mayúsculas como minúsculas) de la cadena proporcionada.
+     *
+     * @param frase La cadena de texto a modificar.
+     * @return La cadena sin vocales.
+     */
     static String quitaVocales(String frase) {
 
         //String con los caracteres a eliminar
@@ -115,7 +139,12 @@ public class Tarea3String {
         return String.valueOf(nuevaFrase);
 
     }
-
+    /**
+     * Elimina los espacios sobrantes en la cadena, dejando solo un asterisco '*' en lugar de múltiples espacios.
+     *
+     * @param frase La cadena de texto a modificar.
+     * @return La cadena con espacios sobrantes reemplazados por asteriscos.
+     */
     static String quitaEspaciosSobrantes(String frase) {
 
         //Se crea un interrupter ya que una vez que se ponga un asterisco no se podrá poner otro hasta
@@ -146,7 +175,12 @@ public class Tarea3String {
 
     }
 
-
+    /**
+     * Invierte el orden de los caracteres en la cadena proporcionada.
+     *
+     * @param frase La cadena de texto a invertir.
+     * @return La cadena con los caracteres invertidos.
+     */
     static String invertir(String frase) {
 
         //StringBuilder para las concatenaciones
@@ -164,7 +198,13 @@ public class Tarea3String {
 
     }
 
-
+    /**
+     * Cuenta cuántas veces aparece una palabra dentro de una frase.
+     *
+     * @param frase La cadena de texto donde buscar.
+     * @param palabra La palabra a contar.
+     * @return El número de veces que aparece la palabra en la frase.
+     */
     static int repeticiones(String frase, String palabra) {
 
         //Contador con las veces que se repite la palabra
@@ -194,7 +234,12 @@ public class Tarea3String {
         return contador;
     }
 
-
+    /**
+     * Verifica si una cadena es un palíndromo, ignorando mayúsculas y minúsculas.
+     *
+     * @param frase La cadena de texto a comprobar.
+     * @return true si la cadena es un palíndromo, false en caso contrario.
+     */
     static boolean palindromo(String frase) {
         //Booleano con el resultado
         boolean palindromo = false;
@@ -206,36 +251,115 @@ public class Tarea3String {
 
         return palindromo;
     }
-
+    /**
+     * Cifra una cadena de texto utilizando el cifrado César con un desplazamiento de 3.
+     *
+     * @param frase La cadena de texto a cifrar.
+     * @return La cadena cifrada.
+     */
     static String cifrar(String frase) {
-
-        //StringBuilder para las concatenaciones
+        // StringBuilder para las concatenaciones
         StringBuilder nuevaFrase = new StringBuilder();
 
-        //Recorre los caracteres de la frase y los concatena con un desplazamiento de 3
+        // Recorre los caracteres de la frase
         for (int i = 0; i < frase.length(); i++) {
-            nuevaFrase.append(frase.charAt(i) + 3);
+            char c = frase.charAt(i);
+
+            // Solo cifrar letras mayúsculas
+            if (Character.isUpperCase(c)) {
+                c = (char) ((c - 'A' + 3) % 26 + 'A'); // Desplazamiento para mayúsculas
+            }
+            // Solo cifrar letras minúsculas
+            else if (Character.isLowerCase(c)) {
+                c = (char) ((c - 'a' + 3) % 26 + 'a'); // Desplazamiento para minúsculas
+            }
+
+            // Concatenar el carácter cifrado (o no cifrado si no era letra)
+            nuevaFrase.append(c);
         }
 
-        //Devuelve en formato String
-        return String.valueOf(nuevaFrase);
-
-
+        // Devuelve en formato String
+        return nuevaFrase.toString();
     }
+    /**
+     * Descifra una cadena de texto cifrada con el cifrado César con un desplazamiento de 3.
+     *
+     * @param frase La cadena de texto a descifrar.
+     * @return La cadena descifrada.
+     */
     static String desCifrar(String frase) {
-
-        //StringBuilder para las concatenaciones
+        // StringBuilder para las concatenaciones
         StringBuilder nuevaFrase = new StringBuilder();
 
-        //Recorre los caracteres de la frase y los concatena con un desplazamiento de -3
+        // Recorre los caracteres de la frase
         for (int i = 0; i < frase.length(); i++) {
-            nuevaFrase.append(frase.charAt(i) - 3);
+            char c = frase.charAt(i);
+
+            // Solo descifrar letras mayúsculas
+            if (Character.isUpperCase(c)) {
+                c = (char) ((c - 'A' - 3 + 26) % 26 + 'A'); // Desplazamiento inverso para mayúsculas
+            }
+            // Solo descifrar letras minúsculas
+            else if (Character.isLowerCase(c)) {
+                c = (char) ((c - 'a' - 3 + 26) % 26 + 'a'); // Desplazamiento inverso para minúsculas
+            }
+
+            // Concatenar el carácter descifrado (o no cifrado si no era letra)
+            nuevaFrase.append(c);
         }
 
-        //Devuelve en formato String
-        return String.valueOf(nuevaFrase);
-
-
+        // Devuelve en formato String
+        return nuevaFrase.toString();
     }
+
+
+    /**
+     * Cuenta la cantidad de veces que cada letra del abecedario aparece en la frase.
+     *
+     * @param frase La cadena de texto donde contar las letras.
+     */
+    static void cuentaCaracteres(String frase) {
+        // Convierte toda la frase a minúsculas
+        frase = frase.toLowerCase();
+
+        // String con las letras que se van a contar (solo minúsculas)
+        String abecedario = "abcdefghijklmnñopqrstuvwxyz";
+        // Array de contadores
+        int[] veces = new int[abecedario.length()];
+
+        // Bucle para mirar cada letra de la frase
+        for (int i = 0; i < frase.length(); i++) {
+
+            // Busca el carácter de la posición que se está revisando de la frase
+            char c = frase.charAt(i);
+
+            // Se busca la posición que tiene en el abecedario si es una letra
+            int p = abecedario.indexOf(c);
+
+            // Si es una letra, se suma 1 en esa posición en el array de veces
+            if (p != -1) {
+                veces[p]++;
+            }
+        }
+
+        // Se imprimen todas las cantidades
+        for (int j = 0; j < veces.length; j++) {
+
+            // Si es 0 no se imprime
+            if (veces[j] != 0) {
+
+                // Imprime la letra correspondiente y la cantidad
+                System.out.print(abecedario.charAt(j) + ": " + veces[j]);
+
+                // Si es 1 se pone vez en lugar de veces
+                if (veces[j] == 1) {
+                    System.out.println(" vez");
+                } else {
+                    System.out.println(" veces");
+                }
+            }
+        }
+    }
+
 
 }
