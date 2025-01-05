@@ -195,20 +195,47 @@ public class Tarea3String {
     }
 
 
-    static boolean palindromo(String frase){
+    static boolean palindromo(String frase) {
         //Booleano con el resultado
         boolean palindromo = false;
 
         //Si coincide el derecho con el revés sin tener en cuenta mayúsculas son palíndromos
-        if(frase.equalsIgnoreCase(invertir(frase))){
-            palindromo=true;
+        if (frase.equalsIgnoreCase(invertir(frase))) {
+            palindromo = true;
         }
 
         return palindromo;
     }
 
+    static String cifrar(String frase) {
+
+        //StringBuilder para las concatenaciones
+        StringBuilder nuevaFrase = new StringBuilder();
+
+        //Recorre los caracteres de la frase y los concatena con un desplazamiento de 3
+        for (int i = 0; i < frase.length(); i++) {
+            nuevaFrase.append(frase.charAt(i) + 3);
+        }
+
+        //Devuelve en formato String
+        return String.valueOf(nuevaFrase);
 
 
+    }
+    static String desCifrar(String frase) {
 
+        //StringBuilder para las concatenaciones
+        StringBuilder nuevaFrase = new StringBuilder();
+
+        //Recorre los caracteres de la frase y los concatena con un desplazamiento de -3
+        for (int i = 0; i < frase.length(); i++) {
+            nuevaFrase.append(frase.charAt(i) - 3);
+        }
+
+        //Devuelve en formato String
+        return String.valueOf(nuevaFrase);
+
+
+    }
 
 }
