@@ -86,5 +86,32 @@ private static boolean letraCorrecta(String nif){
 }
 
 
+static String quitaVocales(String frase){
+
+    //String con los caracteres a eliminar
+    String eliminar = "aeiouAEIOUáéíóúÁÉÍÓÚ";
+
+    //StringBuilder para crear la nueva frase sin los caracteres especificados anteriormente
+    StringBuilder nuevaFrase = new StringBuilder();
+
+    //Bucle que recorre toda la frase y mira caracter por caracter
+    for(int i = 0; i < frase.length(); i++){
+
+        //Cada caracter se almacena como String para compararlo
+        String letraActual = String.valueOf(frase.charAt(i));
+
+        //Si el caracter no aparece se concatenará en la nueva frase
+        if(!(eliminar.contains(letraActual))){
+            nuevaFrase.append(letraActual);
+        }
+
+    }
+
+    //Se devuelve la frase en formato String
+    return String.valueOf(nuevaFrase);
+
+}
+
+
 
 }
