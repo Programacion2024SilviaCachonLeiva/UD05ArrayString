@@ -87,13 +87,13 @@ public class Reto697 {
                     }
                     break;
                 case DERECHA:
-                    if (matriz.length - 1 < col + veces) {
+                    if (tamaño - 1 < col + veces) {
                         veces--;
                         continuar = false; // Detener si se sale de la matriz.
                     }
                     break;
                 case ABAJO:
-                    if (fila + veces > matriz[fila].length - 1) {
+                    if (fila + veces > tamaño - 1) {
                         veces--;
                         continuar = false; // Detener si se sale de la matriz.
                     }
